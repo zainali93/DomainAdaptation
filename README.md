@@ -20,6 +20,7 @@ The proposed domain-adaptation and fine-tuning framework is illustrated below:
 <p align="center">
   <img src="assets/framework.png" alt="Domain adaptation and fine-tuning framework" width="750">
 </p>
+
 ---
 
 ## Repository Structure
