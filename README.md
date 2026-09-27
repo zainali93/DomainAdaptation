@@ -346,4 +346,4 @@ The citation will be updated with the final proceedings information when availab
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/zainali93/DomainAdaptation/tree/master?tab=MIT-1-ov-file) file for details.
+This project is released under the [MIT License](https://github.com/zainali93/DomainAdaptation/tree/master?tab=MIT-1-ov-file).
