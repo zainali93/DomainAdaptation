@@ -15,10 +15,11 @@ The proposed framework consists of two main stages:
 1. **Domain Adaptation** — XLM-R and mBERT are further pretrained on the Urdu News Dataset 1M using masked language modeling.
 2. **Fake News Classification** — the vanilla and domain-adapted models are fine-tuned and evaluated on four Urdu fake news datasets.
 
-The complete framework is available here:
+The proposed domain-adaptation and fine-tuning framework is illustrated below:
 
-[View the methodology framework](assets/framework.pdf)
-
+<p align="center">
+  <img src="assets/framework.png" alt="Domain adaptation and fine-tuning framework" width="750">
+</p>
 ---
 
 ## Repository Structure
