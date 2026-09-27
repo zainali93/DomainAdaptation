@@ -88,8 +88,6 @@ The labels are encoded as:
 
 ATG and UFN23 primarily contain short news texts, whereas UFN21 and UFake21 contain longer news articles.
 
-Further information is available in [`datasets/README.md`](datasets/README.md).
-
 ### Urdu News Dataset 1M
 
 The large-scale Urdu news corpus used for domain-adaptive pretraining is not redistributed in this repository.
@@ -107,6 +105,8 @@ datasets/Urdu-News-Dataset-1M.csv
 ```
 
 The domain-adaptation scripts automatically construct the 80/10/10 train/validation/test split used by the training pipeline.
+
+For further details regarding the construction, collection, and characteristics of these datasets, please refer to the original dataset publications cited in our paper.
 
 ---
 
