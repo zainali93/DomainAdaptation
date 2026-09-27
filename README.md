@@ -90,8 +90,8 @@ Four Urdu fake news datasets are included in the `datasets/` directory in a stan
 
 The labels are encoded as:
 
-- `0` — Real news
-- `1` — Fake news
+- `0` -- Real news
+- `1` -- Fake news
 
 ATG and UFN23 primarily contain short news texts, whereas UFN21 and UFake21 contain longer news articles.
 
