@@ -18,7 +18,7 @@ The proposed framework consists of two main stages:
 The proposed domain-adaptation and fine-tuning framework is illustrated below:
 
 <p align="center">
-  <img src="assets/framework.png" alt="Domain adaptation and fine-tuning framework" width="750">
+  <img src="assets/framework.png" alt="Domain adaptation and fine-tuning framework" width="550">
 </p>
 
 ---
