@@ -20,6 +20,9 @@ The proposed domain-adaptation and fine-tuning framework is illustrated below:
 <p align="center">
   <img src="assets/framework.png" alt="Domain adaptation and fine-tuning framework" width="550">
 </p>
+<p align="center">
+  <em>Proposed framework. Left: basic fine-tuning; right: domain adaptation followed by fine-tuning. PLM = Pretrained Language Model.</em>
+</p>
 
 ---
 
