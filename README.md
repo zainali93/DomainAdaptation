@@ -12,8 +12,8 @@ The repository provides scripts for reproducing both the domain-adaptation and d
 
 The proposed framework consists of two main stages:
 
-1. **Domain Adaptation** — XLM-R and mBERT are further pretrained on the Urdu News Dataset 1M using masked language modeling.
-2. **Fake News Classification** — the vanilla and domain-adapted models are fine-tuned and evaluated on four Urdu fake news datasets.
+1. **Domain Adaptation** &mdash; XLM-R and mBERT are further pretrained on the Urdu News Dataset 1M using masked language modeling.
+2. **Fake News Classification** &mdash; the vanilla and domain-adapted models are fine-tuned and evaluated on four Urdu fake news datasets.
 
 The proposed domain-adaptation and fine-tuning framework is illustrated below:
 
@@ -90,8 +90,8 @@ Four Urdu fake news datasets are included in the `datasets/` directory in a stan
 
 The labels are encoded as:
 
-- `0` --- Real news
-- `1` --- Fake news
+- `0` &mdash; Real news
+- `1` &mdash; Fake news
 
 ATG and UFN23 primarily contain short news texts, whereas UFN21 and UFake21 contain longer news articles.
 
@@ -254,11 +254,11 @@ Each dataset is divided into:
 
 Training is performed in two stages.
 
-### Stage 1 — Frozen Encoder
+### Stage 1 &mdash; Frozen Encoder
 
 The pretrained language model is frozen while the task-specific classification layers are trained for 20 epochs using a learning rate of `1e-5`.
 
-### Stage 2 — Unfrozen Encoder
+### Stage 2 &mdash; Unfrozen Encoder
 
 The best model from the frozen stage is restored; the language model is unfrozen, and the complete network is fine-tuned for another 20 epochs using a reduced learning rate of `1e-6`.
 
@@ -291,8 +291,8 @@ Experiment outputs and checkpoints are written to the `outputs/` directory, incl
 
 The domain-adapted models are also available on Hugging Face:
 
-- [XLM-R — Domain Adapted on Urdu News 1M](https://huggingface.co/ma1993/xlm-roberta-base-Urdu1M-finetuned)
-- [mBERT — Domain Adapted on Urdu News 1M](https://huggingface.co/ma1993/mBERT-Urdu1M-finetuned)
+- [XLM-R &mdash; Domain Adapted on Urdu News 1M](https://huggingface.co/ma1993/xlm-roberta-base-Urdu1M-finetuned)
+- [mBERT &mdash; Domain Adapted on Urdu News 1M](https://huggingface.co/ma1993/mBERT-Urdu1M-finetuned)
 
 These checkpoints can be used directly instead of rerunning domain-adaptive
 pretraining.
