@@ -54,6 +54,13 @@ DomainAdaptation/
 
 ## Installation
 
+Clone the repository:
+
+```bash
+git clone https://github.com/zainali93/DomainAdaptation.git
+cd DomainAdaptation
+```
+
 The experiments were conducted using Python 3.11 and TensorFlow 2.15. A Conda environment is recommended for reproducing the software environment.
 
 ```bash
