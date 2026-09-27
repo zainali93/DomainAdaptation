@@ -1,18 +1,10 @@
 # Fake News Classification in Urdu through Domain Adaptation of Multilingual Language Models
 
-This repository contains the code, datasets, trained models, and supplementary
-experimental results for **"Fake News Classification in Urdu through Domain
-Adaptation of Multilingual Language Models,"** accepted at the **33rd
-International Conference on Neural Information Processing (ICONIP 2026)**.
+This repository contains the code, datasets, trained models, and supplementary experimental results for **"Fake News Classification in Urdu through Domain Adaptation of Multilingual Language Models,"** accepted at the **33rd International Conference on Neural Information Processing (ICONIP 2026)**.
 
-The work investigates domain-adaptive pretraining of multilingual language
-models for Urdu fake news classification. In particular, XLM-R and multilingual
-BERT (mBERT) are further pretrained on a large Urdu news corpus using masked
-language modeling (MLM) and subsequently fine-tuned on four Urdu fake news
-datasets.
+The work investigates domain-adaptive pretraining of multilingual language models for Urdu fake news classification. In particular, XLM-R and multilingual BERT (mBERT) are further pretrained on a large Urdu news corpus using masked language modeling (MLM) and then fine-tuned on four Urdu fake news datasets.
 
-The repository provides scripts for reproducing both the domain-adaptation and
-downstream classification experiments reported in the paper.
+The repository provides scripts for reproducing both the domain-adaptation and downstream classification experiments reported in the paper.
 
 ---
 
@@ -20,10 +12,8 @@ downstream classification experiments reported in the paper.
 
 The proposed framework consists of two main stages:
 
-1. **Domain Adaptation** — XLM-R and mBERT are further pretrained on the Urdu
-   News Dataset 1M using masked language modeling.
-2. **Fake News Classification** — the vanilla and domain-adapted models are
-   fine-tuned and evaluated on four Urdu fake news datasets.
+1. **Domain Adaptation** — XLM-R and mBERT are further pretrained on the Urdu News Dataset 1M using masked language modeling.
+2. **Fake News Classification** — the vanilla and domain-adapted models are fine-tuned and evaluated on four Urdu fake news datasets.
 
 The complete framework is available here:
 
@@ -70,12 +60,9 @@ conda activate domainadaptation
 pip install -r requirements.txt
 ```
 
-All commands below assume that they are executed from the root directory of
-the repository.
+All commands below assume that they are executed from the root directory of the repository.
 
-Domain-adaptive pretraining is computationally intensive, and a CUDA-enabled
-GPU is recommended. TensorFlow will automatically use compatible GPU devices
-available in the environment.
+Domain-adaptive pretraining is computationally intensive, and a CUDA-enabled GPU is recommended. TensorFlow will automatically use compatible GPU devices available in the environment.
 
 ---
 
@@ -83,8 +70,7 @@ available in the environment.
 
 ### Downstream Fake News Datasets
 
-Four Urdu fake news datasets are included in the `datasets/` directory in a
-standardized format containing `text` and `label` columns.
+Four Urdu fake news datasets are included in the `datasets/` directory in a standardized format containing `text` and `label` columns.
 
 | File | Dataset | Description |
 |---|---|---|
@@ -98,18 +84,15 @@ The labels are encoded as:
 - `0` — Real news
 - `1` — Fake news
 
-ATG and UFN23 primarily contain short news texts, whereas UFN21 and UFake21
-contain longer news articles.
+ATG and UFN23 primarily contain short news texts, whereas UFN21 and UFake21 contain longer news articles.
 
 Further information is available in [`datasets/README.md`](datasets/README.md).
 
 ### Urdu News Dataset 1M
 
-The large-scale Urdu news corpus used for domain-adaptive pretraining is not
-redistributed in this repository.
+The large-scale Urdu news corpus used for domain-adaptive pretraining is not redistributed in this repository.
 
-The experiments use the **Urdu News Dataset 1M**, containing approximately
-1.04 million Urdu news articles.
+The experiments use the **Urdu News Dataset 1M**, containing approximately 1.04 million Urdu news articles.
 
 The dataset can be downloaded from Kaggle:
 
@@ -121,18 +104,13 @@ After downloading, place the CSV file at:
 datasets/Urdu-News-Dataset-1M.csv
 ```
 
-The domain-adaptation scripts automatically construct the 80/10/10
-train/validation/test split used by the training pipeline.
-
-For attribution and further details about the corpus, refer to Hussain et al.
-(2022), *Urdu News Dataset 1M*.
+The domain-adaptation scripts automatically construct the 80/10/10 train/validation/test split used by the training pipeline.
 
 ---
 
 ## Domain-Adaptive Pretraining
 
-Domain adaptation is performed by continuing masked language model pretraining
-of XLM-R and mBERT on the Urdu News Dataset 1M.
+Domain adaptation is performed by continuing masked language model pretraining of XLM-R and mBERT on the Urdu News Dataset 1M.
 
 The common training configuration is:
 
@@ -148,9 +126,7 @@ The common training configuration is:
 | Warm-up steps | 1,000 |
 | Weight decay | 0.01 |
 
-The corpus is divided into 80% training, 10% validation, and 10% test data.
-Tokenized documents are concatenated and divided into sequences of 128 tokens,
-with incomplete final chunks discarded.
+The corpus is divided into 80% training, 10% validation, and 10% test data. Tokenized documents are concatenated and divided into sequences of 128 tokens, with incomplete final chunks discarded.
 
 ### XLM-R
 
@@ -193,8 +169,7 @@ The downstream classification experiments can be reproduced using:
 python classification/train_classifier.py
 ```
 
-The dataset and language model are selected at the beginning of
-`train_classifier.py`.
+The dataset and language model are selected at the beginning of `train_classifier.py`.
 
 For example:
 
@@ -212,9 +187,7 @@ DATASET_NAME = "UFN21"
 DATASET_NAME = "UFake21"
 ```
 
-The classification pipeline uses a maximum sequence length of **170 tokens**
-for the shorter ATG and UFN23 datasets and **512 tokens** for the longer
-UFN21 and UFake21 datasets.
+The classification pipeline uses a maximum sequence length of **170 tokens** for the shorter ATG and UFN23 datasets and **512 tokens** for the longer UFN21 and UFake21 datasets.
 
 ### Model Options
 
@@ -246,8 +219,7 @@ MODEL_NAME = "models/mbert_urdu_news"
 
 ## Classification Architecture and Training
 
-For downstream classification, the pretrained language model representation
-is passed through a task-specific classification network consisting of:
+For downstream classification, the pretrained language model representation is passed through a task-specific classification network consisting of:
 
 ```text
 Pretrained Language Model
@@ -275,14 +247,11 @@ Training is performed in two stages.
 
 ### Stage 1 — Frozen Encoder
 
-The pretrained language model is frozen while the task-specific classification
-layers are trained for 20 epochs using a learning rate of `1e-5`.
+The pretrained language model is frozen while the task-specific classification layers are trained for 20 epochs using a learning rate of `1e-5`.
 
 ### Stage 2 — Unfrozen Encoder
 
-The best model from the frozen stage is restored, the language model is
-unfrozen, and the complete network is fine-tuned for another 20 epochs using
-a reduced learning rate of `1e-6`.
+The best model from the frozen stage is restored; the language model is unfrozen, and the complete network is fine-tuned for another 20 epochs using a reduced learning rate of `1e-6`.
 
 Binary cross-entropy is used as the classification loss.
 
@@ -290,8 +259,7 @@ Binary cross-entropy is used as the classification loss.
 
 ## Multi-Seed Evaluation
 
-The classification script evaluates each model-dataset configuration over five
-fixed random seeds:
+The classification script evaluates each model-dataset configuration over five fixed random seeds:
 
 ```python
 SEEDS = [42, 99, 1005, 2023, 2024]
@@ -304,11 +272,9 @@ For each run, the script reports:
 - Recall
 - F1-score
 
-Aggregate results are reported as **mean ± standard deviation** across the five
-runs.
+Aggregate results are reported as **mean ± standard deviation** across the five runs.
 
-Experiment outputs and checkpoints are written to the `outputs/` directory,
-including per-seed results and an aggregate summary.
+Experiment outputs and checkpoints are written to the `outputs/` directory, including per-seed results and an aggregate summary.
 
 ---
 
@@ -326,10 +292,7 @@ pretraining.
 
 ## Supplementary Results
 
-Additional training curves are provided in the [`assets/`](assets/) directory.
-These figures supplement the results reported in the paper and provide the
-training and validation dynamics of the domain-adaptation and classification
-experiments.
+Additional training curves are provided in the [`assets/`](assets/) directory. These figures supplement the results reported in the paper and provide the training and validation dynamics of the domain-adaptation and classification experiments.
 
 ### XLM-R Classification
 
@@ -368,11 +331,10 @@ If you use this work, please cite:
 }
 ```
 
-The citation will be updated with the final proceedings information when
-available.
+The citation will be updated with the final proceedings information when available.
 
 ---
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/zainali93/DomainAdaptation/tree/main?tab=MIT-1-ov-file) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/zainali93/DomainAdaptation/tree/master?tab=MIT-1-ov-file) file for details.
