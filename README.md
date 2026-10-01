@@ -220,9 +220,6 @@ or:
 ```python
 MODEL_NAME = "models/mbert_urdu_news"
 ```
-
----
-
 ## Classification Architecture and Training
 
 For downstream classification, the pretrained language model representation is passed through a task-specific classification network consisting of:
