@@ -6,7 +6,11 @@ The work investigates domain-adaptive pretraining of multilingual language model
 
 The repository provides scripts for reproducing both the domain-adaptation and downstream classification experiments reported in the paper.
 
----
+## Video Overview
+
+
+
+https://github.com/user-attachments/assets/fe40fcbc-3e34-4d71-894c-4ed5c885d2ff
 
 ## Methodology
 
@@ -23,8 +27,6 @@ The proposed domain-adaptation and fine-tuning framework is illustrated below:
 <p align="center">
   <em>Proposed framework. Left: basic fine-tuning; right: domain adaptation followed by fine-tuning. PLM = Pretrained Language Model.</em>
 </p>
-
----
 
 ## Repository Structure
 
@@ -53,8 +55,6 @@ DomainAdaptation/
 └── README.md
 ```
 
----
-
 ## Installation
 
 Clone the repository:
@@ -75,8 +75,6 @@ pip install -r requirements.txt
 All commands below assume that they are executed from the root directory of the repository.
 
 Domain-adaptive pretraining is computationally intensive, and a CUDA-enabled GPU is recommended. TensorFlow will automatically use compatible GPU devices available in the environment.
-
----
 
 ## Datasets
 
@@ -117,8 +115,6 @@ datasets/Urdu-News-Dataset-1M.csv
 The domain-adaptation scripts automatically construct the 80/10/10 train/validation/test split used by the training pipeline.
 
 For further details regarding the construction, collection, and characteristics of these datasets, please refer to the original dataset publications cited in our paper.
-
----
 
 ## Domain-Adaptive Pretraining
 
@@ -170,8 +166,6 @@ models/mbert_urdu_news/
 
 Both scripts also evaluate the resulting masked language model and report its
 perplexity.
-
----
 
 ## Fake News Classification
 
@@ -267,7 +261,6 @@ The best model from the frozen stage is restored; the language model is unfrozen
 
 Binary cross-entropy is used as the classification loss.
 
----
 
 ## Multi-Seed Evaluation
 
@@ -288,7 +281,6 @@ Aggregate results are reported as **mean ± standard deviation** across the five
 
 Experiment outputs and checkpoints are written to the `outputs/` directory, including per-seed results and an aggregate summary.
 
----
 
 ## Trained Models
 
@@ -300,7 +292,6 @@ The domain-adapted models are also available on Hugging Face:
 These checkpoints can be used directly instead of rerunning domain-adaptive
 pretraining.
 
----
 
 ## Supplementary Results
 
@@ -328,7 +319,6 @@ Additional training curves are provided in the [`assets/`](assets/) directory. T
 | UFN21 | [Accuracy](assets/mbert_ufn2021_accuracy.pdf) | [Loss](assets/mbert_ufn2021_loss.pdf) |
 | UFake21 | [Accuracy](assets/mbert_urdufake2021_accuracy.pdf) | [Loss](assets/mbert_urdufake2021_loss.pdf) |
 
----
 
 ## Citation
 
@@ -344,8 +334,6 @@ If you use this work, please cite:
 ```
 
 The citation will be updated with the final proceedings information when available.
-
----
 
 ## License
 
